@@ -1,0 +1,71 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: b8feb777f0fcb63db6e9c033df34977e3893ad70cc1180951a50206798b8c10c
+
+name:           hw4
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/hw4#readme>
+homepage:       https://github.com/githubuser/hw4#readme
+bug-reports:    https://github.com/githubuser/hw4/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2021 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/hw4
+
+library
+  exposed-modules:
+      Task1, Task1Bad, Task2, ConcurrentHashTable, Task67
+  hs-source-dirs:
+      src
+  build-depends: base >=4.7 && <5
+               , deepseq
+               , random
+               , mtl
+               , deepseq
+               , parallel
+               , hashable
+               , stm
+               , directory
+               , vector
+               , microlens
+               , filepath
+  default-language: Haskell2010
+
+executable hw4-exe
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N6 -eventlog -O2
+  build-depends:
+      base >=4.7 && <5
+    , hw4
+    , criterion
+  default-language: Haskell2010
+
+test-suite hw4-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules: GeomSpec, TestUtils, ConcurrentHashTableSpec
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hw4
+    , hspec
+    , threads
+    , QuickCheck
+  default-language: Haskell2010

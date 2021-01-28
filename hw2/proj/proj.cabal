@@ -1,0 +1,81 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 513527e9935fce68e4ea2bdc26a4689d9d362af9d103de2681b049fa3fc692c3
+
+name:           proj
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/proj#readme>
+homepage:       https://github.com/githubuser/proj#readme
+bug-reports:    https://github.com/githubuser/proj/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2020 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/proj
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Path
+                     , Node
+                     , Utils
+                     , FSUtils
+                     , FSIO
+                     , FSOrerations
+  ghc-options:         -Wall
+  build-depends:       base >= 4.9 && < 5
+                     , mtl
+                     , split >= 0.2.2
+                     , exceptions
+                     , directory
+                     , transformers
+                     , bytestring
+                     , time
+                     , Diff
+                     , SHA
+                     , aeson
+  default-language: Haskell2010
+
+executable proj
+  main-is: Main.hs
+  other-modules:
+      Paths_proj
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , proj
+                     , optparse-applicative
+                     , mtl
+                     , transformers
+                     , split >= 0.2.2
+                     , exceptions
+                     , bytestring
+  default-language: Haskell2010
+
+test-suite proj-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  other-modules:       FSUtilsSpec, TestUtils
+  main-is:             Spec.hs
+  build-depends:       base
+                     , proj
+                     , hspec
+                     , mtl
+                     , exceptions
+                     , bytestring
+                     , time
+                     , QuickCheck
+  ghc-options:         -Wall -Werror -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
